@@ -19,32 +19,49 @@ Npm : >= 11.6
 Installer les dépendances
 
 composer install
+
 npm install
+
+
 Configuration
 
 cp .env.example .env
+
+
 php artisan key:generate
+
+
 (Pense à configurer ta base de données dans le fichier .env)
 
 Base de données
 
 php artisan migrate
-🏃 Lancement
+
+
+## 🏃 Lancement
+
+
 Lance ces deux commandes dans deux terminaux différents :
 
-Terminal 1 (Serveur PHP) :
+
+# 1) Terminal 1 (Serveur PHP) :
 
 php artisan serve
-Terminal 2 (Compilation React) :
+
+# 2) Terminal 2 (Compilation React) :
 
 npm run dev
+
 Accès : http://127.0.0.1:8000
 
-📝 Infos utiles
+## 📝 Infos utiles
+
 Pages : resources/js/Pages/ (fichiers .tsx)
 
 Composants : resources/js/Components/ (fichiers .tsx)
 
 Routes : routes/web.php
 
-Build Production : npm run build
+## Pour la production : 
+
+npm run build
