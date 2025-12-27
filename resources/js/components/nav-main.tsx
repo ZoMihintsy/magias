@@ -13,7 +13,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
     const page = usePage();
     return (
         <SidebarGroup className="px-2 py-0">
-            <SidebarGroupLabel>{items.length <= 2 ? 'Menu client' : 'Panel administratif'}</SidebarGroupLabel>
+            <SidebarGroupLabel>{items.length >= 4 ? 'Menu client' : 'Panel administratif'}</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
                     <SidebarMenuItem key={item.title}>
