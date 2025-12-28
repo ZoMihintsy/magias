@@ -143,9 +143,11 @@
 }
 
 
-.relative.aspect-video{
+
     
-}
+/* =====
+         DASHBOARD
+                    ===== */
 .relative.aspect-video:hover {
   background-color:  #f18a3c9d;
   transform: translateY(-4px);
@@ -191,5 +193,58 @@ h1 svg {
 .lucide-library-big {
     color: #6366f1; /* indigo */
     
+}
+
+
+
+/* =====
+            PRIX
+                    ===== */
+                
+/* ---------- Card ---------- */
+.card {
+    background: #ffffff;
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+/* ---------- Grid ---------- */
+.grid-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* ---------- Title ---------- */
+.card h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f1893c;
+    background: #f9fafb;
+    border-radius: 8px;
+    text-align: center;
+}
+/* ---------- Error message ---------- */
+.text-red-500 {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+/* ---------- Inputs ---------- */
+input {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #f1893c;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+}
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
