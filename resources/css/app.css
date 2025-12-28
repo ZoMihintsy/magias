@@ -141,3 +141,55 @@
         @apply bg-background text-foreground;
     }
 }
+
+
+.relative.aspect-video{
+    
+}
+.relative.aspect-video:hover {
+  background-color:  #f18a3c9d;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px #f1893c;
+}
+.absolute.inset-0 {
+  opacity: 0.35;
+}
+h1{
+    justify-content: center;
+    display: flex;
+    color: rgb(255, 115, 0);
+    font-size: 1.5rem;
+}
+
+/* Icônes dans les titres des cartes */
+h1 svg {
+    width: 50px;
+    height: 50px;
+    stroke-width: 2;
+    flex-shrink: 0;
+
+    /* Badge moderne */
+    padding: 6px;
+    border-radius: 8px;
+
+    /* Animation douce */
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+/* Utilisateurs */
+.lucide-users-2 {
+    color: #f97316; /* orange */
+   
+}
+
+/* Achats */
+.lucide-receipt-euro {
+    color: #10b981; /* vert */
+    
+}
+
+/* Livres */
+.lucide-library-big {
+    color: #6366f1; /* indigo */
+    
+}
+

@@ -5,6 +5,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router, usePage } from '@inertiajs/react';
 import { History, Library, LibraryBigIcon, ReceiptEuro, Users2Icon } from 'lucide-react';
 import { useEffect } from 'react';
+import "../../../css/app.css"
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -22,7 +23,7 @@ export default function Dashboard() {
             <Head title="Dashboard" />
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border hover:bg-orange-300 hover:transition hover:cursor-pointer">
+                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border hover:bg-orange-100 hover:transition hover:cursor-pointer">
                         <Link href={'/utilisateurs'} title='veuillez me cliquer pour voir le contenue'>
                             <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
                             <h1 className='text-center underline font-semibold text-xl flex'>
