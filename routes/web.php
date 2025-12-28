@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,7 +26,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     })->name('log');
 
     Route::get('/utilisateurs', [AdminController::class, 'utilisateurs'])->name('admin.utilisateurs');
+
     Route::get('/utilisateur/q={id}', [AdminController::class, 'utilisateur'])->name('admin.utilisateur');
+
+    Route::get('/admin/achat', [PanelController::class, 'indexAchat'])->name('admin.panel');
+
+    Route::get('/ajouter/prix/livre', [PanelController::class, 'ajoutePrix'])->name('admin.prixLivre');
+
+    Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
 });
 
 require __DIR__ . '/settings.php';

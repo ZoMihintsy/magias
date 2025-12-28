@@ -53,7 +53,7 @@ export function AppSidebar() {
         },
         {
             title: 'Panels achats',
-            href: dashboard(),
+            href: '/admin/achat',
             icon: BadgeDollarSignIcon
         },
         {
