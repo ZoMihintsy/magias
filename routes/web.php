@@ -34,6 +34,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/ajouter/prix/livre', [PanelController::class, 'ajoutePrix'])->name('admin.prixLivre');
 
     Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
+
+    Route::get('/livre/categorie', [PanelController::class, 'livreCategorie'])->name('admin.livre.categorie');
 });
 
 require __DIR__ . '/settings.php';

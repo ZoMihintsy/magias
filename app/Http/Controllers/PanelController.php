@@ -27,4 +27,9 @@ class PanelController extends Controller
         $data['user_id'] = Auth::user()->id;
         Achat::create($data);
     }
+    public function livreCategorie()
+    {
+        $livreCategorie = Achat::where('deleted_at', 'null')->get();
+        return Inertia::render('Admin/Achats/manager/categorie', ['categorie' => $livreCategorie]);
+    }
 }
