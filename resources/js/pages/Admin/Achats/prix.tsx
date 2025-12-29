@@ -60,8 +60,6 @@ export default function () {
                         Valider
                     </button>
                 </form>
-
-
             </div>
         </AppLayout>
     )
