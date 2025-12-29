@@ -13,7 +13,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link, router, usePage } from '@inertiajs/react';
-import { BadgeDollarSignIcon, BadgeEuroIcon, BellDot, Book, BookOpen, Folder, HistoryIcon, LayoutGrid, LucideLibraryBig, Users } from 'lucide-react';
+import { BadgeDollarSignIcon, BadgeEuroIcon, BellDot, Book, BookOpen, Folder, HistoryIcon, LayoutGrid, LibraryBigIcon, LucideLibraryBig, LucideLibrarySquare, Users } from 'lucide-react';
 import AppLogo from './app-logo';
 
 
@@ -30,14 +30,14 @@ export function AppSidebar() {
             icon: LayoutGrid,
         },
         {
-            title: auth.user.credit == 0 ? 'Acheter un livre' : 'Dashboard',
-            href: '#',
+            title: auth.user.credit == 0 ? 'Acheter un livre' : 'Generateur de livre',
+            href: auth.user.credit == 0 ? '/achat/livre' : '/generateur/livre',
             icon: auth.user.credit == 0 ? (Book) : LayoutGrid,
         },
         {
-            title: 'Notifications',
+            title: 'Bibliotheques',
             href: '#',
-            icon: BellDot
+            icon: LucideLibrarySquare
         },
         {
             title: 'Historiques',

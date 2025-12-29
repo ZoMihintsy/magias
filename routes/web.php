@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LivreController;
 use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         return Inertia::render('dashboard');
     })->name('dashboard');
+
+    Route::get('/achat/livre', [LivreController::class, 'index'])->name('achat.livre');
+
+    Route::get('/achat/livre/categorie={id}', [LivreController::class, 'achat'])->name('achat.add');
+
+    Route::get('/valide/achat/{id}', [LivreController::class, 'takeAchat'])->name('achat.take');
+
+    Route::get('/generateur/livre', [LivreController::class, 'generer'])->name('livre.generer');
+
+    route::post('/generer/livre/valide', [LivreController::class, 'generate'])->name('livre.generate');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -34,6 +45,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/ajouter/prix/livre', [PanelController::class, 'ajoutePrix'])->name('admin.prixLivre');
 
     Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
+
+    Route::get('/livre/categorie', [PanelController::class, 'livreCategorie'])->name('admin.categorie.livre');
 });
 
 require __DIR__ . '/settings.php';

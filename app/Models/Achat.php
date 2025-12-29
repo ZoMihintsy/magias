@@ -18,4 +18,8 @@ class Achat extends Model
     {
         return $this->hasMany(User::class, 'id', 'user_id');
     }
+    public function categorie()
+    {
+        return $this->hasMany(AchatUser::class, 'achat_id');
+    }
 }
