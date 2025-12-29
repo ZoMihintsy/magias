@@ -36,6 +36,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
 });
 
-
-
 require __DIR__ . '/settings.php';
