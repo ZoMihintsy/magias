@@ -7,6 +7,7 @@ import axios from "axios";
 import { Info } from "lucide-react";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import "../../../../css/app.css";
 
 export default function () {
     const breadcrumbs: BreadcrumbItem[] = [
@@ -56,9 +57,11 @@ export default function () {
                     <Input type="text" onChange={(e) => setType(e.target.value)} placeholder="Entrer le type" className={'mr-4'} />
                     <Input type="number" onChange={(e) => setPrix(e.target.value)} placeholder="Entrer le prix" />
                     <br />
-                    <button>
-                        Valider
-                    </button>
+                    <div className="flex justify-center mb-3">
+                        <button className=" w-40 mt-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-500 active:bg-blue-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 justify-center">
+                             Valider
+                        </button>
+                    </div>
                 </form>
             </div>
         </AppLayout>
