@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/generateur/livre', [LivreController::class, 'generer'])->name('livre.generer');
 
     route::post('/generer/livre/valide', [LivreController::class, 'generate'])->name('livre.generate');
+
+    Route::get('/bibliotheques', [LivreController::class, 'bibliotheque'])->name('bibliotheque');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

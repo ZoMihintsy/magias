@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Models\Achat;
+use App\Models\AchatLivre;
+use App\Models\AchatUser;
 use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
@@ -50,6 +52,10 @@ class HandleInertiaRequests extends Middleware
             ],
             'users' => [
                 'count' => User::where('id', '!=', Auth::user()?->id)->count()
+            ],
+            'livre' => [
+                'livres' => AchatUser::where('user_id', Auth::user()->id)->count(),
+                '_livres' => AchatLivre::where('user_id', Auth::user()->id)->where('generate', true)->count()
             ],
             'panelAchat' => [
                 'count' => Achat::where('deleted_at', 'null')->count()

@@ -21,7 +21,7 @@ class PanelController extends Controller
     public function addPrix(Request $request)
     {
         $data = $request->validate([
-            'prix' => ['required'],
+            'prix' => ['required', 'min:' . 0],
             'type' => ['required', 'unique:' . Achat::class]
         ]);
         $data['user_id'] = Auth::user()->id;

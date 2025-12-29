@@ -52,4 +52,13 @@ class User extends Authenticatable
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
+
+    public function achat()
+    {
+        return $this->hasMany(AchatLivre::class, 'user_id');
+    }
+    public function livre()
+    {
+        return $this->hasMany(AchatUser::class, 'user_id');
+    }
 }

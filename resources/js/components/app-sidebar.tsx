@@ -36,7 +36,7 @@ export function AppSidebar() {
         },
         {
             title: 'Bibliotheques',
-            href: '#',
+            href: '/bibliotheques',
             icon: LucideLibrarySquare
         },
         {
