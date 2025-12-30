@@ -15,6 +15,10 @@ export default function ({ categorie }) {
             href: '/admin/achat',
         },
         {
+            title: 'Manager categories',
+            href: '/livre/categorie'
+        },
+        {
             title: 'Modifier la categorie d\' un livre',
             href: '#'
         }

@@ -1,7 +1,7 @@
 import { PlaceholderPattern } from "@/components/ui/placeholder-pattern";
 import AppLayout from "@/layouts/app-layout";
 import { BreadcrumbItem } from "@/types";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -19,7 +19,10 @@ export default function ({ achat }) {
             duration: 4000,
         }) : toast.success('Votre achat a ete mise a jour merci! ', {
             duration: 4000,
-        })
+        });
+        const interval = setTimeout(() => {
+            router.visit('/generateur/livre')
+        }, 2000)
         // toast.success()
 
     }
