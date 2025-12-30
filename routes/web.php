@@ -49,6 +49,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
 
     Route::get('/livre/categorie', [PanelController::class, 'livreCategorie'])->name('admin.categorie.livre');
+
+    Route::get('/modif/categorie={id}', [PanelController::class, 'modifCategorie'])->name('modif.categorie');
 });
 
 require __DIR__ . '/settings.php';

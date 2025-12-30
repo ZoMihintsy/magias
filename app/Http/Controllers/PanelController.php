@@ -21,7 +21,7 @@ class PanelController extends Controller
     public function addPrix(Request $request)
     {
         $data = $request->validate([
-            'prix' => ['required', 'min:' . 0],
+            'prix' => ['required', 'numeric', 'min:' . 1],
             'type' => ['required', 'unique:' . Achat::class]
         ]);
         $data['user_id'] = Auth::user()->id;
@@ -38,5 +38,11 @@ class PanelController extends Controller
         $livre = Achat::where('id', $id)->first();
 
         return Inertia::render('Admin/Achat/manager/manager-categorie', ['livre' => $livre]);
+    }
+    public function modifCategorie($id)
+    {
+        $categorie = Achat::where('id', $id)->first();
+
+        return Inertia::render('Admin/Achats/manager/modif', ['categorie' => $categorie]);
     }
 }

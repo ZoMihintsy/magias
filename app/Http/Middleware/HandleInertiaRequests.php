@@ -54,8 +54,11 @@ class HandleInertiaRequests extends Middleware
                 'count' => User::where('id', '!=', Auth::user()?->id)->count()
             ],
             'livre' => [
-                'livres' => AchatUser::where('user_id', Auth::user()->id)->count(),
-                '_livres' => AchatLivre::where('user_id', Auth::user()->id)->where('generate', true)->count()
+                'livres' => AchatUser::where('user_id', Auth::user()?->id)->count(),
+                '_livres' => AchatLivre::where('user_id', Auth::user()?->id)->where('generate', true)->count()
+            ],
+            'dashboard' => [
+                'client' => User::where('id', Auth::user()?->id)->with('achat')->with('livre')->get()
             ],
             'panelAchat' => [
                 'count' => Achat::where('deleted_at', 'null')->count()

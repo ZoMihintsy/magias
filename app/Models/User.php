@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(AchatUser::class, 'user_id');
     }
+    public function livres()
+    {
+        return $this->hasMany(Achat::class);
+    }
 }
