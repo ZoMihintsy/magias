@@ -35,7 +35,7 @@ export default function Creer({ categorie }) {
                 duration: 4000,
             });
             const interval = setTimeout(() => {
-                window.location.reload();
+                router.visit('/bibliotheques')
             }, 2000)
         } catch (error) {
             toast.error(error.response.data.message, {

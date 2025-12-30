@@ -15,6 +15,10 @@ export default function ({ categorie }) {
             href: '/admin/achat',
         },
         {
+            title: 'Manager categories',
+            href: '/livre/categorie'
+        },
+        {
             title: 'Modifier la categorie d\' un livre',
             href: '#'
         }
@@ -26,13 +30,14 @@ export default function ({ categorie }) {
     const validate = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/modif/data', { prix, type });
-            toast.success('Modification du prix enregistré avec succès !', {
+            await axios.put(`/modif/data/${categorie.id}`, { prix, type });
+            toast.success('Modification enregistré avec succès !', {
                 duration: 4000,
                 position: 'top-right',
             });
-            reset();
-
+            setTimeout(() => {
+                router.visit('/livre/categorie');
+            }, 2000)
         } catch (e) {
 
             setErreur(e.response?.data?.errors);
@@ -42,20 +47,34 @@ export default function ({ categorie }) {
             });
         }
 
+
     }
-    const supprimer = async (e) => {
+    const supprimer = async () => {
+
         try {
-            await axios.get('/delete/categorie/' + categorie.id);
-            toast.success('Suppression du livre fait avec succès !', {
-                duration: 4000,
-                position: 'top-right',
-            });
+            if (categorie.deleted_at == 'null') {
+                await axios.get('/delete/categorie/' + categorie.id);
+                toast.success('Suppression du livre fait avec succès !', {
+                    duration: 4000,
+                    position: 'top-right',
+                });
+
+            } else {
+                toast.error('Erreur lors du suppression du livre, le livre est deja supprimer!', {
+                    duration: 4000,
+                    position: 'top-right',
+                });
+            }
+
         } catch (i) {
             toast.error('Erreur lors du suppression du categorie du livre!', {
                 duration: 4000,
                 position: 'top-right',
             });
         }
+        setTimeout(() => {
+            router.visit('/livre/categorie');
+        }, 2000);
     }
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -76,11 +95,11 @@ export default function ({ categorie }) {
                         <button className=" w-40 mt-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-500 active:bg-blue-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 justify-center">
                             Valider
                         </button>
-                        <a href="#" onClick={() => {
+                        <b onClick={() => {
                             if (confirm('Voulez vous vraiment supprmer cette categorie ?')) {
-                                supprimer
-                            }
-                        }} >Supprimer</a>
+                                supprimer()
+                            } else return false
+                        }} className=" w-40 mt-2 px-4 py-2.5 bg-red-600 hover:bg-red-500 active:bg-blue-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 justify-center">Supprimer</b>
                     </div>
                 </form>
             </div>

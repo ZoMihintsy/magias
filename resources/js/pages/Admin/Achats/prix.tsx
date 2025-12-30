@@ -33,7 +33,9 @@ export default function () {
                 duration: 4000,
                 position: 'top-right',
             });
-            reset();
+            setTimeout(() => {
+                router.visit('/livre/categorie');
+            }, 2000);
 
         } catch (e) {
 
@@ -59,7 +61,7 @@ export default function () {
                     <br />
                     <div className="flex justify-center mb-3">
                         <button className=" w-40 mt-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-500 active:bg-blue-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 justify-center">
-                             Valider
+                            Valider
                         </button>
                     </div>
                 </form>
