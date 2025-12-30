@@ -30,17 +30,24 @@ class LivreController extends Controller
     {
         $achat = Achat::where('id', $id)->first();
 
-        $achats = AchatUser::where('achat_id', $id)->first();
+        $achats = AchatUser::where('achat_id', $id)->where('user_id', Auth::user()->id)->first();
 
         if ($achats) {
-            AchatUser::where('achat_id', $id)->update([
-                'prix' => $achat->prix
-            ]);
-            User::where('id', Auth::user()->id)->update([
-                'credit' => $achat->prix
-            ]);
+
+            if ($achats->prix == 0) {
+                User::where('id', Auth::user()->id)->update([
+                    'credit' => $achat->prix + Auth::user()->credit
+                ]);
+                AchatUser::where('achat_id', $id)->update([
+                    'prix' => $achat->prix
+                ]);
+                return response()->json([
+                    'status' => 201,
+                    'message' => 'Votre transaction a ete mise a jour'
+                ]);
+            }
             return response()->json([
-                'status' => 201,
+                'status' => 202,
                 'message' => 'Votre transaction a ete mise a jour'
             ]);
         }
@@ -50,7 +57,7 @@ class LivreController extends Controller
             'prix' => $achat->prix
         ]);
         User::where('id', Auth::user()->id)->update([
-            'credit' => $achat->prix
+            'credit' => $achat->prix + Auth::user()->credit
         ]);
         return response()->json([
             'status' => 200,
@@ -92,5 +99,11 @@ class LivreController extends Controller
             'status' => 200,
             'message' => 'votre livre est bien g&eacute;nerer , vous pouvez la modifier a tout moment avant de le t&eacute;l&eacute;charger en pdf'
         ]);
+    }
+    public function bibliotheque()
+    {
+        $livre = AchatLivre::where('user_id', Auth::user()->id)->where('generate', false)->get();
+
+        return Inertia::render('Client/livres/bibliotheque', ['livre' => $livre]);
     }
 }

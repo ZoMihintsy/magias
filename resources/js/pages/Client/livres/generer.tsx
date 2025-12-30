@@ -1,7 +1,7 @@
 import { Input } from "@headlessui/react";
 import { Label } from "@radix-ui/react-label";
 import AppLayout from "@/layouts/app-layout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import { BreadcrumbItem } from "@/types";
 import axios from "axios";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { PlaceholderPattern } from "@/components/ui/placeholder-pattern";
 
 export default function Creer({ categorie }) {
-
+    const { auth } = usePage().props as any;
     const breadcrumbs: BreadcrumbItem[] =
         [
             {
@@ -31,10 +31,16 @@ export default function Creer({ categorie }) {
             // const reponse = await axios.post('/generer/livre/forme', {});
             // alert(ton);
             const reponse = await axios.post('/generer/livre/valide', { efant_name: name, age, pronom, langue, morale, theme, duree, ton });
-            toast.success(reponse.data.message);
-            window.location.reload();
+            toast.success(reponse.data.message, {
+                duration: 4000,
+            });
+            const interval = setTimeout(() => {
+                window.location.reload();
+            }, 2000)
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error.response.data.message, {
+                duration: 4000,
+            });
         }
     }
     return (
@@ -48,6 +54,10 @@ export default function Creer({ categorie }) {
                         <h1>
                             Status du credit
                         </h1>
+
+                        <h3 className="text-center text-xl ">
+                            Vous avez {auth.user.credit} &euro; de credit disponible
+                        </h3>
                     </div>
                     <Link href={'/achat/livre'}>
                         <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
@@ -169,8 +179,8 @@ export default function Creer({ categorie }) {
                                     <option value="">-- Choisir un thème --</option>
                                     {categorie.map((e) => {
                                         return e.categorie.map((i) => {
-                                            return i.prix > 0 ? (<option key={i.id} value={e.type}>{e.type}</option>) : (<option disabled key={i.id}>{e.type}</option>)
-
+                                            return i.user_id == auth.user.id && (i.prix > 0 ? (<option key={i.id} value={e.type}>{e.type}</option>) : (<option disabled key={i.id}>{e.type}</option>));
+                                            return console.log(i.user_id + " " + auth.user.id);
                                         })
                                     })}
                                     {/* <option>Aventure</option>

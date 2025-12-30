@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/generateur/livre', [LivreController::class, 'generer'])->name('livre.generer');
 
     route::post('/generer/livre/valide', [LivreController::class, 'generate'])->name('livre.generate');
+
+    Route::get('/bibliotheques', [LivreController::class, 'bibliotheque'])->name('bibliotheque');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -47,6 +49,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/ajoute/data', [PanelController::class, 'addPrix'])->name('admin.add.prix');
 
     Route::get('/livre/categorie', [PanelController::class, 'livreCategorie'])->name('admin.categorie.livre');
+
+    Route::get('/modif/categorie={id}', [PanelController::class, 'modifCategorie'])->name('modif.categorie');
+
+    Route::get('/delete/categorie/{id}', [PanelController::class, 'deleteCategorie'])->name('delete.categorie');
+
+    Route::put('/modif/data/{id}', [PanelController::class, 'modifData'])->name('modification.categorie');
 });
 
 require __DIR__ . '/settings.php';

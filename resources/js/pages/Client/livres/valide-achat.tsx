@@ -15,7 +15,11 @@ export default function ({ achat }) {
     const acheter = async (e) => {
         const reponse = await axios.get('/valide/achat/' + e);
         // alert(reponse.data.status);
-        reponse.data.status == 200 ? toast.success('Votre achat est effectuer merci!') : toast.success('Votre achat a ete mise a jour merci! ')
+        reponse.data.status == 200 ? toast.success('Votre achat est effectuer merci!', {
+            duration: 4000,
+        }) : toast.success('Votre achat a ete mise a jour merci! ', {
+            duration: 4000,
+        })
         // toast.success()
 
     }
