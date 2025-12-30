@@ -230,19 +230,26 @@ a {
   color: #fff;
   padding: 12px 22px;
   border-radius: 999px;
+  font-size: 0.95rem;
   font-weight: 600;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
 }
 
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(241, 122, 43, 0.25);
+   background: orange;
+   text-decoration-color: white;
 }
 
 .btn-outline {
   background: transparent;
   border: 2px solid var(--brand);
   color: var(--brand);
+}
+.btn-outline:hover {
+  background: rgba(107, 90, 237, 0.08);
 }
 
 /* =====================
@@ -527,4 +534,336 @@ input:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
+
+
+
+
+
+
+
+
+
+
+.gen-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.gen-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.gen-steps .dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.gen-steps li.done {
+  color: var(--brand);
+}
+
+.gen-steps li.done .dot {
+  background: var(--brand);
+  color: white;
+}
+ .gen-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+
+}
+.gen-hero-text .badge {
+  display: inline-block;
+  background: var(--brand-soft);
+  color: #2d2a6e;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+/* =========================
+   HERO – CARD ILLUSTRATION
+   ========================= */
+
+.gen-illustration.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+/* SVG principal */
+.gen-illustration svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   ÉLÉMENTS DÉCORATIFS FIXÉS
+   ========================= */
+
+.gen-illustration .star,
+.gen-illustration .planet {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ⭐ Étoile */
+.gen-illustration .star {
+    top: 16px;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+    animation: floatStar 4s ease-in-out infinite;
+}
+
+/* 🪐 Planète */
+.gen-illustration .planet {
+    bottom: 18px;
+    right: 22px;
+    width: 64px;
+    height: 64px;
+    animation: floatPlanet 6s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMATIONS DOUCES
+   ========================= */
+
+@keyframes floatStar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes floatPlanet {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+@media (max-width: 768px) {
+    .gen-illustration .star {
+        width: 28px;
+        height: 28px;
+        top: 12px;
+        left: 12px;
+    }
+
+    .gen-illustration .planet {
+        width: 50px;
+        height: 50px;
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+
+
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.txt-brand {
+  color: var(--brand);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.gen-reassure {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 900px) {
+  .gen-hero {
+    grid-template-columns: 1fr;
+  }
+}
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.dropzone:hover {
+  border-color: var(--brand);
+  background: rgba(107, 90, 237, 0.04);
+}
+
+.file-info {
+  margin-top: 0.5rem;
+} 
+/* ===== INPUT SYSTEM ===== */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text);
+  background-color: #fff;
+
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* Placeholder doux */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(107, 90, 237, 0.2);
+  background-color: #fff;
+}
+
+/* Erreur */
+.input-error,
+input:invalid:not(:placeholder-shown),
+select:invalid {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 2px rgba(232, 93, 93, 0.15);
+}
+
+/* Succès */
+.input-success {
+  border-color: var(--success);
+  box-shadow: 0 0 0 2px rgba(94, 192, 163, 0.15);
+}
+
+/* Disabled */
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background-color: #f3f4f6;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  display: block;
+  color: #374151;
+}
+input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+input[type="radio"] {
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.pills {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.pill input {
+  display: none;
+}
+
+.pill:has(input:checked) {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+.pill:hover {
+  border-color: var(--brand);
+}
+.row > div {
+  display: flex;
+  flex-direction: column;
+}
+input[type="file"] {
+  display: none;
+}
+
+#browseBtn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--brand);
+  color: var(--brand);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#browseBtn:hover {
+  background: rgba(107, 90, 237, 0.08);
+}
+.dark input,
+.dark select,
+.dark textarea {
+  background: #111827;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark input::placeholder {
+  color: #6b7280;
+}
+
 
