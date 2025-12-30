@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\HistoriqueController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     route::post('/generer/livre/valide', [LivreController::class, 'generate'])->name('livre.generate');
 
     Route::get('/bibliotheques', [LivreController::class, 'bibliotheque'])->name('bibliotheque');
+
+    Route::get('/historiques', [HistoriqueController::class, 'client'])->name('historique.client');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

@@ -41,7 +41,7 @@ export function AppSidebar() {
         },
         {
             title: 'Historiques',
-            href: '#',
+            href: '/historiques',
             icon: HistoryIcon
         }
     ];
@@ -57,9 +57,9 @@ export function AppSidebar() {
             icon: BadgeDollarSignIcon
         },
         {
-            title: 'Panels livres',
+            title: 'Historiques',
             href: dashboard(),
-            icon: LucideLibraryBig
+            icon: HistoryIcon
         },
     ]
 
