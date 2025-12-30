@@ -51,6 +51,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/livre/categorie', [PanelController::class, 'livreCategorie'])->name('admin.categorie.livre');
 
     Route::get('/modif/categorie={id}', [PanelController::class, 'modifCategorie'])->name('modif.categorie');
+
+    Route::get('/delete/categorie/{id}', [PanelController::class, 'deleteCategorie'])->name('delete.categorie');
+
+    Route::put('/modif/data/{id}', [PanelController::class, 'modifData'])->name('modification.categorie');
 });
 
 require __DIR__ . '/settings.php';
